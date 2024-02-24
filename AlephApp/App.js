@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { TextInput, TouchableOpacity, StyleSheet, Text, View, Button } from 'react-native';
+import axios from 'axios'
+import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 // import { ThemeProvider, useTheme } from './ThemeContext';
 
 // function ThemeSwitch() {
@@ -15,16 +16,34 @@ import { TextInput, TouchableOpacity, StyleSheet, Text, View, Button } from 'rea
 // }
 
 export default function App() {
-  const [text, setText] = useState('');
+  var [text, setText] = useState('');
+  var [Status, setStatus] = useState('');
+  var [item_hash, setitem_hash] = useState('');
+  var [Reception, setReception] = useState('');
+  var [Sender, setSender] = useState('');
+  var [Chain, setChain] = useState('');
 
   const process = () => {
     console.log('Le texte entré est :', text);
+
+    axios.get(`https://api1.aleph.im/api/v0/messages/` + text
+    ).then(res => {
+      console.log(res);
+      setStatus(res.data.status);
+      setitem_hash(res.data.item_hash);
+      setReception(res.data.reception_time);
+      setSender(res.data.message.sender);
+      setChain(res.data.message.chain);
+    }).catch(err => {
+      console.log(err);
+    })
   };
 
   // const { isDarkMode } = useTheme();
   
   return (
     // <ThemeProvider>
+    <ScrollView>
       <View style={styles.container}>
       {/* <View style={[styles.container, isDarkMode ? styles.darkContainer : styles.lightContainer]}> */}
         {/* <ThemeSwitch/> */}
@@ -41,15 +60,16 @@ export default function App() {
           <Text style={styles.buttonText}>Process</Text>
         </TouchableOpacity>
 
-        <Text style={styles.text}>Status:</Text>
-        <Text style={styles.text}>item_hash:</Text>
-        <Text style={styles.text}>Reception time:</Text>
-        <Text style={styles.text}>Sender:</Text>
-        <Text style={styles.text}>Chain:</Text>
+        <Text style={styles.text}>Status: {Status}</Text>
+        <Text style={styles.text}>item_hash: {item_hash}</Text>
+        <Text style={styles.text}>Reception time: {Reception}</Text>
+        <Text style={styles.text}>Sender: {Sender}</Text>
+        <Text style={styles.text}>Chain: {Chain}</Text>
 
         <StatusBar style="auto"/>
         {/* <StatusBar style={isDarkMode ? 'light' : 'dark'} /> */}
       </View>
+    /</ScrollView>
     // </ThemeProvider>
 
   );
