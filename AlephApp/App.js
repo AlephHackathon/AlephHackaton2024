@@ -1,19 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import axios from 'axios'
-import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
-// import { ThemeProvider, useTheme } from './ThemeContext';
-
-// function ThemeSwitch() {
-//   const { isDarkMode, toggleTheme } = useTheme();
-
-//   return (
-//     <View style={styles.themeSwitch}>
-//       <Text style={styles.text}>Thème {isDarkMode ? 'sombre' : 'clair'}</Text>
-//       <Button title="Changer de thème" onPress={toggleTheme} />
-//     </View>
-//   );
-// }
+import { TextInput, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   var [text, setText] = useState('');
@@ -39,14 +27,8 @@ export default function App() {
     })
   };
 
-  // const { isDarkMode } = useTheme();
-  
   return (
-    // <ThemeProvider>
-    <ScrollView>
       <View style={styles.container}>
-      {/* <View style={[styles.container, isDarkMode ? styles.darkContainer : styles.lightContainer]}> */}
-        {/* <ThemeSwitch/> */}
         <Text>Hello</Text>
 
         <TextInput
@@ -67,26 +49,16 @@ export default function App() {
         <Text style={styles.text}>Chain: {Chain}</Text>
 
         <StatusBar style="auto"/>
-        {/* <StatusBar style={isDarkMode ? 'light' : 'dark'} /> */}
       </View>
-    /</ScrollView>
-    // </ThemeProvider>
-
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  lightContainer: {
-    backgroundColor: '#fff',
-  },
-  darkContainer: {
-    backgroundColor: '#333',
   },
   input: {
     height: 40,
@@ -111,10 +83,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     color: '#000',
-  },
-  themeSwitch: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
   },
 });
