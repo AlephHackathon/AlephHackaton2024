@@ -42,11 +42,11 @@ export default function App() {
           <Text style={styles.buttonText}>Process</Text>
         </TouchableOpacity>
 
-        <Text style={styles.text}>Status: {Status}</Text>
-        <Text style={styles.text}>item_hash: {item_hash}</Text>
-        <Text style={styles.text}>Reception time: {Reception}</Text>
-        <Text style={styles.text}>Sender: {Sender}</Text>
-        <Text style={styles.text}>Chain: {Chain}</Text>
+        <Text style={styles.text}>Status: <Text>{Status}</Text></Text>
+        <Text style={styles.text}>item_hash: <Text>{item_hash}</Text></Text>
+        <Text style={styles.text}>Reception time: <Text>{Reception}</Text></Text>
+        <Text style={styles.text}>Sender: <Text>{Sender}</Text></Text>
+        <Text style={styles.text}>Chain: <Text>{Chain}</Text></Text>
 
         <StatusBar style="auto"/>
       </View>
@@ -85,3 +85,4 @@ const styles = StyleSheet.create({
     color: '#000',
   },
 });
+
