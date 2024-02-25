@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import axios from 'axios'
+import { importAccountFromPrivateKey } from '@aleph-sdk/ethereum';
 import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 // import { ThemeProvider, useTheme } from './ThemeContext';
 
@@ -16,7 +17,17 @@ import { TextInput, TouchableOpacity, ScrollView, StyleSheet, Text, View, Button
 // }
 
 export default function App() {
-  var [text, setText] = useState('');
+  //const account = getAccountFromProvider(window.ethereum);
+//
+  //// initialize the wallet
+  //account.init();
+//
+  //// increase a flow (in ALEPH/hour)
+  //const receiver = "12399e820b4341c6d0d5bb916ad2fa2004fd51ee0a6dc4890fa62cd73dd505a1";
+  //account.increaseALEPHFlow(receiver, 1);
+//
+  //// get the net flow of ALEPH/hour
+  //const flow = account.getALEPHFlow();  var [text, setText] = useState('');
   var [Status, setStatus] = useState('');
   var [item_hash, setitem_hash] = useState('');
   var [Reception, setReception] = useState('');
